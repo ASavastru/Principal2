@@ -1,5 +1,6 @@
 //Parsing Date Time Strings
 
+/*
 
 let m = moment(); //creates a moment object for current dateTime
 
@@ -49,6 +50,7 @@ console.log(`${o.toString()}`);
 
 o.set("day", 9);
 console.log(`${o.toString()}`);
+ */
 
 /*
 

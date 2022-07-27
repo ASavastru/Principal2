@@ -924,3 +924,175 @@ var player = testObjTwo[idNumber];
 
 console.log(player);
 
+//UPDATING OBJECT PROPERTIES
+
+var myDog = {
+    'name': 'Bella',
+    'colour': 'brown'
+};
+
+myDog.name = 'Happy Bella';
+
+console.log(myDog.name);
+
+//ADD NEW PROPERTIES TO AN OBJECT
+
+myDog.bark = "wreff";
+myDog['legs'] = 4; //is possible but not recommended
+
+console.log(myDog.bark);
+console.log(myDog.legs);
+
+//DELETE PROPERTIES FROM AN OBJECT
+
+delete myDog.legs;
+
+console.log(myDog.legs);
+
+//USING OBJECTS FOR LOOKUPS
+
+function phoneticLookup(val) {
+    //can replace a switch
+    //statement with an object
+
+    var lookup = {
+        "alpha": "Adams",
+        "bravo": "Boston",
+        "charlie": "Chicago",
+        "delta": "Denver"
+    };
+    result = lookup[val];
+
+    return result;
+}
+
+console.log(phoneticLookup('delta'));
+
+//TESTING OBJECTS FOR PROPERTIES
+
+function checkObj(checkProp) {
+    if (myDog.hasOwnProperty(checkProp)) {
+        return myDog[checkProp];
+    } else {
+        return "Not Found";
+    }
+}
+
+console.log(checkObj("bark"));
+console.log(checkObj("hello"));
+
+//MANIPULATING COMPLEX OBJECTS
+
+var myMusic = [ //isArray
+    {
+        'artist': 'Kendrick',
+        'title': 'To Pimp A Butterfly',
+        'release_year': 2015,
+        'formats': [
+            '.mp3',
+            '.wav',
+            '.flac'
+        ],
+        'platinum': true
+    },
+
+    {
+        'artist': 'J Cole',
+        'title': '2014 Forest Hills Drive',
+        'release_year': 2014,
+        'formats': [
+            '.mp3',
+            '.wav',
+            '.flac',
+            '.zebra'
+        ],
+        'platinum': true
+    }
+]
+
+//ACCESSING NESTED OBJECTS
+
+var myStorage = {
+    'car': {
+        'inside': {
+            'glove box': 'maps',
+            'passenger seat': 'crumbs'
+        },
+        'outside': {
+            'trunk': 'jack'
+        }
+    }
+};
+
+var gloveBoxContents = myStorage = myStorage.car.inside['glove box'];
+
+console.log(gloveBoxContents);
+
+//ACCESSING NESTED ARRAYS
+
+var myPlants = [{
+    type: 'flowers',
+    list: [
+        'rose',
+        'tulip',
+        'dandelion'
+    ]
+},
+    {
+        type: 'trees',
+        list: [
+            'fir',
+            'pine',
+            'birch'
+        ]
+    }
+];
+
+var secondTree = myPlants[1].list[1];
+
+console.log(secondTree);
+
+//RECORD COLLECTION
+
+var collection = {
+    '2548': {
+        'album': 'SWW',
+        'artist': "Johann",
+        'tracks': [
+            'won',
+            'LRC'
+        ]
+    },
+    'yeo': {
+        'album': 'sturmgewehr',
+        'artist': "Adolf",
+        'tracks': [
+            'JJJ',
+            'NNN'
+        ]
+    },
+    'kazakh': {
+        'album': 'diqtat',
+        'artist': "hunnicus",
+        'tracks': [
+            'throat singing 12 hours'
+        ]
+    },
+};
+
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+function updateRecords(id, prop, val) {
+    if (val === "") {
+        delete collection[id][prop];
+    } else if (prop === "tracks") {
+        collection[id][prop] = collection[id][prop] || [];
+        collection[id][prop].push(val);
+    } else {
+        collection[id][prop] = val;
+    }
+}
+
+console.log(updateRecords('kazakh', 'artist', 'Atilla'));
+
+DOESN 'T WORK MUST MAKE WORK
